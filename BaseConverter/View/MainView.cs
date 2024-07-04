@@ -113,7 +113,7 @@ namespace BaseConverter
                 this.Text = $"{a.GetCustomAttribute<AssemblyTitleAttribute>()?.Title} v{a.GetName().Version}";
                 this.ViewModel.Logger?.LogTrace("Window title set to {Title}", this.Text);
             });
-            
+
             await Task.CompletedTask;
         }
 
