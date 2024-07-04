@@ -31,6 +31,7 @@ namespace BaseConverter
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.TXT_Dec = new TextBox();
             this.LBL_Dec = new Label();
             this.LBL_Hex = new Label();
@@ -135,6 +136,7 @@ namespace BaseConverter
             this.Controls.Add(this.LBL_Dec);
             this.Controls.Add(this.TXT_Dec);
             this.FormBorderStyle = FormBorderStyle.SizableToolWindow;
+            this.Icon = (Icon)resources.GetObject("$this.Icon");
             this.Name = "MainView";
             this.StartPosition = FormStartPosition.CenterScreen;
             this.Text = "Form1";
