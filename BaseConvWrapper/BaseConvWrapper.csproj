@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <Authors>Markus Wackermann</Authors>
+    <Title>Base Converter Wrapper</Title>
+    <Version>0.1</Version>
+    <AssemblyTitle>Base Converter Wrapper</AssemblyTitle>
+  </PropertyGroup>
+
+</Project>

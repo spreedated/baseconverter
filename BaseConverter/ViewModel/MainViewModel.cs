@@ -1,5 +1,4 @@
-﻿using BaseConverter.Logic;
-using CommunityToolkit.Mvvm.ComponentModel;
+﻿using CommunityToolkit.Mvvm.ComponentModel;
 using Microsoft.Extensions.Logging;
 using System;
 using System.Diagnostics;
@@ -24,7 +23,7 @@ namespace BaseConverter.ViewModel
         private string hexInput = "0";
 
         [ObservableProperty]
-        private BaseConvWrapper baseConvWrapper;
+        private BaseConvWrapper.BaseConverter baseConvWrap;
 
         #region Constructor
         public MainViewModel()
@@ -35,10 +34,10 @@ namespace BaseConverter.ViewModel
 
         private void UpdateDisplayValues()
         {
-            this.BinInput = this.BaseConvWrapper.Binary;
-            this.OctInput = this.BaseConvWrapper.Octal;
-            this.DecInput = this.BaseConvWrapper.Decimal.ToString();
-            this.HexInput = this.BaseConvWrapper.Hexadecimal;
+            this.BinInput = this.BaseConvWrap.Binary;
+            this.OctInput = this.BaseConvWrap.Octal;
+            this.DecInput = this.BaseConvWrap.Decimal.ToString();
+            this.HexInput = this.BaseConvWrap.Hexadecimal;
             this.Logger?.LogTrace("Display values updated.");
         }
 
@@ -51,16 +50,16 @@ namespace BaseConverter.ViewModel
             switch (@base)
             {
                 case Base.Binary:
-                    this.BaseConvWrapper = BaseConvWrapper.FromBinary(Convert.ToInt64(value));
+                    this.BaseConvWrap = BaseConvWrapper.BaseConverter.FromBinary(Convert.ToInt64(value));
                     break;
                 case Base.Octal:
-                    this.BaseConvWrapper = BaseConvWrapper.FromOctal(Convert.ToInt64(value));
+                    this.BaseConvWrap = BaseConvWrapper.BaseConverter.FromOctal(Convert.ToInt64(value));
                     break;
                 case Base.Decimal:
-                    this.BaseConvWrapper = BaseConvWrapper.FromDecimal(Convert.ToInt64(value));
+                    this.BaseConvWrap = BaseConvWrapper.BaseConverter.FromDecimal(Convert.ToInt64(value));
                     break;
                 case Base.Hexadecimal:
-                    this.BaseConvWrapper = BaseConvWrapper.FromHexadecimal(value);
+                    this.BaseConvWrap = BaseConvWrapper.BaseConverter.FromHexadecimal(value);
                     break;
             }
 
@@ -69,10 +68,10 @@ namespace BaseConverter.ViewModel
             this.Logger?.LogInformation("Result from {Base} of value \"{Value}\"\nBin: {BinValue}\nOct: {OctValue}\nDec: {DecValue}\nHex: {HexValue}\n\nOperation took {OpTime}",
                 @base.ToString(),
                 value,
-                this.BaseConvWrapper.Binary,
-                this.BaseConvWrapper.Octal,
-                this.BaseConvWrapper.Decimal,
-                this.BaseConvWrapper.Hexadecimal,
+                this.BaseConvWrap.Binary,
+                this.BaseConvWrap.Octal,
+                this.BaseConvWrap.Decimal,
+                this.BaseConvWrap.Hexadecimal,
                 sw.Elapsed.ToString("mm\\:ss\\:ffffff"));
 
             this.UpdateDisplayValues();

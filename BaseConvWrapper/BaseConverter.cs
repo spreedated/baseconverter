@@ -4,18 +4,18 @@
 using System.Runtime.InteropServices;
 using System.Text;
 
-namespace BaseConverter.Logic
+namespace BaseConvWrapper
 {
-    internal readonly struct BaseConvWrapper
+    public readonly struct BaseConverter
     {
         [DllImport("BaseConv.dll", CharSet = CharSet.Ansi)]
-        public static extern long StringToLong([MarshalAs(UnmanagedType.LPStr)] string s, long @base);
+        internal static extern long StringToLong([MarshalAs(UnmanagedType.LPStr)] string s, long @base);
 
         [DllImport("BaseConv.dll", CharSet = CharSet.Ansi)]
-        public static extern void LongToString(StringBuilder s, long n, long @base);
+        internal static extern void LongToString(StringBuilder s, long n, long @base);
 
         [DllImport("BaseConv.dll", CharSet = CharSet.Ansi)]
-        public static extern void ULongToString(StringBuilder s, long n, long @base);
+        internal static extern void ULongToString(StringBuilder s, long n, long @base);
 
         public readonly string Binary
         {
@@ -43,7 +43,7 @@ namespace BaseConverter.Logic
             }
         }
 
-        BaseConvWrapper(long @decimal)
+        BaseConverter(long @decimal)
         {
             this.Decimal = @decimal;
         }
@@ -56,21 +56,21 @@ namespace BaseConverter.Logic
             return val.ToString();
         }
 
-        public static BaseConvWrapper FromBinary(long value)
+        public static BaseConverter FromBinary(long value)
         {
-            return new BaseConvWrapper(StringToLong(value.ToString(), 2));
+            return new BaseConverter(StringToLong(value.ToString(), 2));
         }
-        public static BaseConvWrapper FromDecimal(long value)
+        public static BaseConverter FromDecimal(long value)
         {
-            return new BaseConvWrapper(StringToLong(value.ToString(), 10));
+            return new BaseConverter(StringToLong(value.ToString(), 10));
         }
-        public static BaseConvWrapper FromHexadecimal(string value)
+        public static BaseConverter FromHexadecimal(string value)
         {
-            return new BaseConvWrapper(StringToLong(value.ToString(), 16));
+            return new BaseConverter(StringToLong(value.ToString(), 16));
         }
-        public static BaseConvWrapper FromOctal(long value)
+        public static BaseConverter FromOctal(long value)
         {
-            return new BaseConvWrapper(StringToLong(value.ToString(), 8));
+            return new BaseConverter(StringToLong(value.ToString(), 8));
         }
     }
 }
