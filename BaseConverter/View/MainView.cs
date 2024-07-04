@@ -1,5 +1,8 @@
+using BaseConverter.Logic;
 using BaseConverter.ViewModel;
 using System;
+using System.Linq;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using static BaseConverter.Enumerations.BaseEnumerations;
 using static BaseConverter.Enumerations.WinForms;
@@ -70,6 +73,27 @@ namespace BaseConverter
             this.TXT_Oct.DataBindings.Add("Text", this.ViewModel, "OctInput", true, DataSourceUpdateMode.OnPropertyChanged);
             this.TXT_Dec.DataBindings.Add("Text", this.ViewModel, "DecInput", true, DataSourceUpdateMode.OnPropertyChanged);
             this.TXT_Hex.DataBindings.Add("Text", this.ViewModel, "HexInput", true, DataSourceUpdateMode.OnPropertyChanged);
+
+            Task.Run(async () =>
+            {
+                while (Globals.Fonts.Families.Length == 0 || !this.IsHandleCreated)
+                {
+                    await Task.Delay(50);
+                }
+
+                foreach (Control c in this.Controls.OfType<Control>().Where(x => x is TextBox || x is Label))
+                {
+                    this.Invoke(() =>
+                    {
+                        c.Font = new(Globals.Fonts.Families[0], Globals.FONTSIZE);
+                    });
+                }
+
+                this.Invoke(() =>
+                {
+                    this.Font = new(Globals.Fonts.Families[0], Globals.FONTSIZE);
+                });
+            });
         }
 
         private void TXT_Bin_KeyDown(object sender, KeyEventArgs e)
