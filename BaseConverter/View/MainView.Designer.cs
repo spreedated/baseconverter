@@ -50,7 +50,7 @@ namespace BaseConverter
             this.TXT_Dec.TabIndex = 2;
             this.TXT_Dec.Tag = "Decimal";
             this.TXT_Dec.TextChanged += this.TXT_Dec_TextChanged;
-            this.TXT_Dec.KeyDown += this.TXT_Bin_KeyDown;
+            this.TXT_Dec.KeyDown += this.Textbox_KeyDown;
             // 
             // LBL_Dec
             // 
@@ -79,7 +79,7 @@ namespace BaseConverter
             this.TXT_Hex.TabIndex = 3;
             this.TXT_Hex.Tag = "Hexadecimal";
             this.TXT_Hex.TextChanged += this.TXT_Hex_TextChanged;
-            this.TXT_Hex.KeyDown += this.TXT_Bin_KeyDown;
+            this.TXT_Hex.KeyDown += this.Textbox_KeyDown;
             // 
             // LBL_Bin
             // 
@@ -99,7 +99,7 @@ namespace BaseConverter
             this.TXT_Bin.TabIndex = 0;
             this.TXT_Bin.Tag = "Binary";
             this.TXT_Bin.TextChanged += this.TXT_Bin_TextChanged;
-            this.TXT_Bin.KeyDown += this.TXT_Bin_KeyDown;
+            this.TXT_Bin.KeyDown += this.Textbox_KeyDown;
             // 
             // LBL_Oct
             // 
@@ -119,7 +119,7 @@ namespace BaseConverter
             this.TXT_Oct.TabIndex = 1;
             this.TXT_Oct.Tag = "Octal";
             this.TXT_Oct.TextChanged += this.TXT_Oct_TextChanged;
-            this.TXT_Oct.KeyDown += this.TXT_Bin_KeyDown;
+            this.TXT_Oct.KeyDown += this.Textbox_KeyDown;
             // 
             // MainView
             // 
