@@ -29,3 +29,7 @@ string octalValue = bc.Octal; // 27
 string hexValue = bc.Hexadecimal; // 17
 string binValue = bc.Binary; // 10111
 ```
+
+---
+
+The entire original application and sourcecode can be found [here](https://aminet.net/package/util/wb/BaseConv.lha).
