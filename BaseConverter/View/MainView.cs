@@ -145,6 +145,9 @@ namespace BaseConverter
             if (e.KeyCode == Keys.Enter)
             {
                 this.ViewModel.CalculateFrom(txt.Text, Enum.Parse<Base>(txt.Tag.ToString()));
+
+                e.Handled = true;
+                e.SuppressKeyPress = true;
             }
         }
     }
