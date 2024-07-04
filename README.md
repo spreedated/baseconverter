@@ -14,3 +14,18 @@ The `convert.cpp` is adjusted to use ***C++*** with `extern` keyword, so it can 
 ![](Screenshots/winforms.png)
 <br/>
 *WinForms application*
+
+## Usage
+
+If you want to use the library, use the `BaseConvWrapper` along with the `BaseConv` **DLL**.
+
+In C# as following
+
+```csharp
+BaseConvWrapper.BaseConverter bc = BaseConvWrapper.BaseConverter.FromDecimal(23);
+
+long decimalValue = bc.Decimal; // 23
+string octalValue = bc.Octal; // 27
+string hexValue = bc.Hexadecimal; // 17
+string binValue = bc.Binary; // 10111
+```
