@@ -11,6 +11,8 @@
     <Title>Base Converter</Title>
     <Version>0.1</Version>
     <AssemblyTitle>Base Converter</AssemblyTitle>
+    <SignAssembly>True</SignAssembly>
+    <AssemblyOriginatorKeyFile>baseconv.snk</AssemblyOriginatorKeyFile>
   </PropertyGroup>
 
   <ItemGroup>
